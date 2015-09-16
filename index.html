@@ -121,13 +121,14 @@
 ## Zeichnen eines Kreises
 <br>
 </br>
-     
+            
 			var e=document.getElementById("CanvasID");
             var canv=e.getContext("2d");
             
             canv.fillStyle= "Farbe";
             canv.arc(X,Y,Radius,Startpunkt,Endpunkt);
-            canv.fill();                   
+            canv.fill();  
+            
                         </script>
                         </section>
         </section>
@@ -218,8 +219,8 @@
             Farbverlauf.addColorStop(0, "Farbe1");
             Farbverlauf.addColorStop(0.5, "Farbe2");
             Farbverlauf.addColorStop(1, "Farbe3");
-            Farbverlauf.fillStyle=Farbverlauf;
-            Farbverlauf.fillRect(X,Y,Breite,Höhe);         
+            canv.fillStyle=Farbverlauf;
+            canv.fillRect(X,Y,Breite,Höhe);         
                         </script>
                         </section>
             
