@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Canvas</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/sky.css" id="sky">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+        
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+                
+                <section>
+					<h1>Canvas</h1>
+                    <p>__________________________________________________________</p>
+                    <br></br>
+					<h3>Die HTML Leinwand</h3>
+					<p>
+						<small>Created by <a href="https://www.facebook.com/maximilian.buscher">Maximilian Büscher</a></small>
+					</p>
+				</section>
+
+                
+                
+                <section>
+					<h2>Definition</h2>
+                    <br></br>
+					<ul>
+						<li>HTML5 Bau-Element</li>
+						<li>Bereich mit Höhen- und Breitenangaben</li>
+                        <li>Containerobjekt für Grafiken</li>
+						<li>Zeichnen per JavaScript</li>
+					</ul>
+				</section>
+
+                
+              
+              
+				<!-- Example of nested vertical slides -->
+				<section>
+					<section>
+						 <h2>Canvas Element</h2>
+                        <canvas id="meinCanvasElement" width="600" height="500">
+                        </canvas>
+						
+                        <script> 
+                            var e = document.getElementById("meinCanvasElement");
+                            var canv = e.getContext("2d");
+                            
+                            canv.strokeStyle = "black";
+                            canv.lineWidth = 10;
+                            canv.fillStyle = "white";
+                            canv.moveTo(0,0);
+                            canv.lineTo(600,0);
+                            canv.lineTo(600,500);
+                            canv.lineTo(0,500);
+                            canv.lineTo(0,0);
+                            canv.stroke();
+                        
+                        </script>
+					</section>
+                    
+                    <section data-markdown>
+					<script type="text/template">
+## Erstellen eines Canvas Elements
+<br>
+</br>
+     
+			<canvas id="CanvasID" width="PixelX" height="PixelY">
+            </canvas>
+                    
+                        </script>
+                        </section>
+        </section>
+        
+        <section>   
+					<section>
+						<h2>Kreis</h2>
+						<canvas id="meinKreisCanvas" width="300" height="500">
+                        </canvas>
+                        <script>
+ 
+                            var e=document.getElementById("meinKreisCanvas");
+                            var canv=e.getContext("2d");
+                            canv.fillStyle= "darkblue";
+                            canv.arc(150,250,150,0,2*Math.PI);
+                            canv.fill();
+ 
+                        </script>
+					</section>
+                    
+            <section data-markdown>
+					<script type="text/template">
+## Zeichnen eines Kreises
+<br>
+</br>
+     
+			var e=document.getElementById("CanvasID");
+            var canv=e.getContext("2d");
+            
+            canv.fillStyle= "Farbe";
+            canv.arc(X,Y,Radius,Startpunkt,Endpunkt);
+            canv.fill();                   
+                        </script>
+                        </section>
+        </section>
+                    
+        <section>
+					<section>
+						<h2>Rechteck</h2>
+                        <canvas id="meinRechteckCanvas" width="300" height="500">                           
+                        </canvas>
+                        <script>
+                        
+                            var e = document.getElementById("meinRechteckCanvas");
+                            var canv = e.getContext("2d");
+                            canv.fillStyle = "darkred";
+                            canv.fillRect(0,100,300,300);
+                            
+                        </script>
+					</section>
+                    
+                    <section data-markdown>
+					<script type="text/template">
+## Zeichnen eines Rechtecks
+<br>
+</br>
+     
+			var e = document.getElementById("CanvasID");
+            var canv = e.getContext("2d");
+            
+            canv.fillStyle = "Farbe";
+            canv.fillRect(X,Y,Breite,Höhe);
+                    
+                        </script>
+                        </section>
+            
+        </section>
+        
+        <section>
+					<section>
+                        <h2>Farbverläufe</h2>
+                        <canvas id="meinFarbverlaufCanvas" width="600" height="500">
+                        </canvas>
+						
+                        <script>                        
+                            var e=document.getElementById("meinFarbverlaufCanvas");
+                            var canv=e.getContext("2d");
+                            var gradient=canv.createLinearGradient(150,300,450,0);
+                            gradient.addColorStop(0, "darkred");
+                            gradient.addColorStop(0.1, "red");
+                            gradient.addColorStop(0.2, "yellow");
+                            gradient.addColorStop(0.3, "red");
+                            gradient.addColorStop(0.4, "darkred");
+                            gradient.addColorStop(0.5, "red");
+                            gradient.addColorStop(0.6, "yellow");
+                            gradient.addColorStop(0.7, "red");
+                            gradient.addColorStop(0.8, "darkred");
+                            gradient.addColorStop(0.9, "red");
+                            gradient.addColorStop(1, "yellow");
+                            canv.fillStyle=gradient;
+                            canv.fillRect(300,100,300,300);
+                            
+                            var e=document.getElementById("meinFarbverlaufCanvas");
+                            var canv=e.getContext("2d");
+                            var gradient=canv.createRadialGradient(150,250,0,150,250,175);
+                            gradient.addColorStop(0, "darkblue");
+                            gradient.addColorStop(0.1, "blue");
+                            gradient.addColorStop(0.2, "lightblue");
+                            gradient.addColorStop(0.3, "blue");
+                            gradient.addColorStop(0.4, "darkblue");
+                            gradient.addColorStop(0.5, "blue");
+                            gradient.addColorStop(0.6, "lightblue");
+                            gradient.addColorStop(0.7, "blue");
+                            gradient.addColorStop(0.8, "darkblue");
+                            gradient.addColorStop(0.9, "blue");
+                            gradient.addColorStop(1, "lightblue");
+                            canv.fillStyle=gradient;
+                            canv.arc(150,250,150,0,2*Math.PI);
+                            canv.fill();
+                        </script>
+					</section>
+                    
+            <section data-markdown>
+					<script type="text/template">
+## Zeichnen von Farbverläufen
+            
+            var Farbverlauf=canv.createLinearGradient(X,SteigungX,Y,SteigungY);
+            oder
+            var Farbverlauf=canv.createRadialGradient(X1,Y1,Radius1,X2,Y2,Radius2);
+            Farbverlauf.addColorStop(0, "Farbe1");
+            Farbverlauf.addColorStop(0.5, "Farbe2");
+            Farbverlauf.addColorStop(1, "Farbe3");
+            Farbverlauf.fillStyle=Farbverlauf;
+            Farbverlauf.fillRect(X,Y,Breite,Höhe);         
+                        </script>
+                        </section>
+            
+        </section>
+        
+        <section>
+                    <section>
+                        <h2>Pfade</h2>
+                        <canvas id="meinePfadeCanvas" width="300" height="500">
+                        </canvas>
+						                        
+                        <script> 
+                            var e = document.getElementById("meinePfadeCanvas");
+                            var canv = e.getContext("2d");
+                            canv.strokeStyle = "darkred";
+                            canv.lineWidth = 5;
+                            canv.fillStyle = "pink";
+                            canv.moveTo(100,250);
+                            canv.lineTo(160,130);
+                            canv.lineTo(220,180);
+                            canv.lineTo(200,320);
+                            canv.stroke();
+                            canv.fill();
+                        </script>
+                        
+                        <canvas id="meinePfadeCanvas2" width="300" height="500">
+                        </canvas>
+                        
+                        <script>
+                            var e = document.getElementById("meinePfadeCanvas2");
+                            var canv = e.getContext("2d");
+                            canv.strokeStyle = "darkblue";
+                            canv.lineWidth = 10;
+                            canv.moveTo(200,450);
+                            canv.bezierCurveTo(200, 450, 100, 350, 200, 250);
+                            canv.bezierCurveTo(200, 250, 300, 150, 200, 50);
+                            canv.stroke();
+                        </script>
+					</section>
+        
+
+            <section data-markdown>
+					<script type="text/template">
+## Zeichnen von Pfaden
+<br>
+</br>
+
+            canv.strokeStyle = "Farbe";
+            canv.lineWidth = Breite;
+            canv.fillStyle = "Farbe";
+            canv.moveTo(X1,Y1);
+            canv.lineTo(X2,Y2);
+            canv.lineTo(X3,Y3);
+            canv.lineTo(X4,Y4);
+            canv.stroke();
+            canv.fill();        
+                        </script>
+                        </section>
+        </section>
+            
+        <section>
+                <section>
+                        <h2>Schrift</h2>
+                        <canvas id="SchriftCanvas" width="600" height="500">
+                        </canvas>
+						
+                        <script>                       
+                            var e=document.getElementById("SchriftCanvas");
+                            var canv=e.getContext("2d");
+                            canv.font="50px Arial";
+                            canv.fillStyle = "darkblue";
+                            canv.fillText("<canvas>",200,150);
+                            
+                             var gradient=canv.createLinearGradient(100,0,400,0);
+                            gradient.addColorStop(0,"darkblue");
+                            gradient.addColorStop(0.5,"blue");
+                            gradient.addColorStop(1,"lightblue");
+                            
+                            canv.font="50px Arial";
+                            canv.strokeStyle = "darkblue";
+                            canv.strokeText("<canvas>",200,250);
+
+                            canv.fillStyle=gradient;
+                            canv.font="50px Arial";
+                            canv.fillText("<canvas>",200,350);
+                        </script>
+                    
+					</section>
+  
+        <section data-markdown>
+					<script type="text/template">
+## Schreiben
+<br>
+</br>
+            
+            canv.font="Größe Schrift";
+            canv.fillStyle = "Farbe";
+            canv.fillText("Text",X,Y);
+            oder
+            canv.strokeStyle = "Farbe";
+            canv.strokeText("Text",X,Y);
+                        </script>
+                        </section>
+        </section>
+    
+    
+                <section>
+					<h2>Geschichte</h2>
+                    <br></br>
+					<ul>
+						<li>Entwicklung durch Apple für WebKit</li>
+						<li>Standardisierung durch Arbeitsgruppe WHATWG für HTML5</li>
+					</ul>
+				</section>
+    
+    <section>
+					<h2>Vorteile</h2>
+                    <br></br>
+					<ul>
+						<li>HTML5 Canvas löst Flash ab</li>
+						<li>Flash: Software mit Image- und Sicherheitsproblemen</li>
+                        <li>Canvas harmonisiert mit der Webseite und HTML</li>
+                        <li>Übereinanderlegen beliebiger HTML-Elemente</li>
+                        <li>Gute Kommunikation mit JavaScript und Events</li>
+					</ul>
+				</section>
+    
+    <section>
+				<section>
+					<h2>Demo</h2>
+				    <canvas id="BallCanvas" width="600" height="500">
+                    </canvas>
+                    
+                    <script>
+                    var canvas = document.getElementById("BallCanvas");
+                    var context = canvas.getContext('2d');
+                    var r, radgrad;
+                    var i = 240;
+                    var z=0;
+                        
+                    var drawCircle = function() {
+                        
+                    context.clearRect(0,0,canvas.width,canvas.height);
+                        
+                    if (z<23){var r = i-10;}
+                    else {var r = i+10;}
+                        
+                    // radiale Gradiente mit Lichtpunkt
+                    radgrad = context.createRadialGradient(
+                    300,250,r/3.0,300,250,r );
+                    radgrad.addColorStop(0.0,'hsl('+z*7+',100%,75%)');
+                    radgrad.addColorStop(0.9,'hsl('+z*7+',100%,50%)');
+                    radgrad.addColorStop(1.0,'rgba(0,0,0,0)');
+                        
+                    // Kugel zeichnen
+                    context.fillStyle = radgrad ;
+                    context.arc(300,250,r,0,2*Math.PI);
+                    context.fill();
+                        
+                    i=r;
+                    z++;
+                    if (z>=46) {z=0;}
+                    };
+            
+                drawCircle();  // erstes Set an Kugeln zeichnen
+
+                // Animation mit Puls-Tempo starten/stoppen
+                var pulse = 720;
+                var running = null;
+                canvas.onclick = function() {
+                if (running) {
+                window.clearInterval(running);
+                running = null;
+                }
+                else {
+                running = window.setInterval(
+                "drawCircle()",60000/pulse);
+                }};
+        
+                    </script>
+				</section>
+
+
+                
+                <section data-markdown>
+					<script type="text/template">
+## Erstellen eines Canvas Elements
+<br>
+</br>
+     
+			<section>
+            <h2>Demo</h2>
+			<canvas id="BallCanvas" width="600" height="500">
+            </canvas>
+        
+                    </script>
+				</section>
+
+                <section data-markdown>
+					<script type="text/template">
+## Variablen
+<br>
+</br>
+
+            <script>
+            var canvas = document.getElementById("BallCanvas");
+            var context = canvas.getContext('2d');
+            var r, radgrad;
+            var i = 240;
+            var z=0;
+					</script>
+				</section>
+                
+                <section data-markdown>
+					<script type="text/template">
+## Funktion drawCircles
+                        
+			var drawCircle = function() {
+                        
+            context.clearRect(0,0,canvas.width,canvas.height);
+                        
+            if (z<23){var r = i-10;}
+            else {var r = i+10;}
+                        
+            // radiale Gradiente mit Lichtpunkt
+            radgrad = context.createRadialGradient(
+            300,250,r/3.0,300,250,r );
+            radgrad.addColorStop(0.0,'hsl('+z*7+',100%,75%)');
+            radgrad.addColorStop(0.9,'hsl('+z*7+',100%,50%)');
+            radgrad.addColorStop(1.0,'rgba(0,0,0,0)');
+            
+            // Kugel zeichnen
+            context.fillStyle = radgrad ;
+            context.arc(300,250,r,0,2*Math.PI);
+            context.fill();
+                
+            i=r;
+            z++;
+            if (z>=46) {z=0;}
+            };
+			         </script>
+				</section>
+                
+    
+    
+                <section data-markdown>
+					<script type="text/template">
+## Animation
+
+			drawCircle();  // erstes Set an Kugeln zeichnen
+
+            // Animation mit Puls-Tempo starten/stoppen
+            var pulse = 720;
+            var running = null;
+            canvas.onclick = function() {
+            if (running) {
+            window.clearInterval(running);
+            running = null;
+            }
+            else {
+            running = window.setInterval(
+            "drawCircle()",60000/pulse);
+            }};
+					</script>
+				</section>
+            
+    </section>
+                 
+    
+	<section>
+        <br>
+        </br>
+        <h1>The End</h1>
+        <p>__________________________________________________________</p>
+        <br></br>
+		<p>
+		<small>Created by <a href="https://www.facebook.com/maximilian.buscher">Maximilian Büscher</a></small>
+		</p>
+    </section>			
+				
+
+               
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+            
+    
+        
+                    
+		</script>
+
+	</body>
+</html>
